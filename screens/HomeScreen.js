@@ -2,6 +2,7 @@ import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import Carousel from '../components/Carousel';
+import FoodTypes from '../components/FoodTypes';
 
 const HomeScreen = () => {
   return (
@@ -26,8 +27,11 @@ const HomeScreen = () => {
         <Feather name="search" size={24} color="#e52b50" />
       </View>
 
-      {/* Carousel Part  */}
+      {/* Image Slider Component  */}
       <Carousel />
+
+      {/* Food Types Component  */}
+      <FoodTypes />
     </SafeAreaView>
   );
 };

@@ -39,7 +39,7 @@ export default [
     id: '4',
     image:
       'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_112,h_112,c_fill/ei26sjhizcjrk9gmjy5r',
-    name: 'udupi Utsav',
+    name: 'Udupi Utsav',
     rating: 4.3,
     time: '30-40',
     offer: '60%',

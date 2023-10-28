@@ -1,12 +1,13 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import Carousel from '../components/Carousel';
 import FoodTypes from '../components/FoodTypes';
+import QuickFood from '../components/QuickFood';
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView>
+    <ScrollView>
       {/* Search Bar  */}
       <View
         style={{
@@ -32,7 +33,10 @@ const HomeScreen = () => {
 
       {/* Food Types Component  */}
       <FoodTypes />
-    </SafeAreaView>
+
+      {/* Quick Food Component  */}
+      <QuickFood />
+    </ScrollView>
   );
 };
 

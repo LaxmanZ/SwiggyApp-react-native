@@ -45,7 +45,7 @@ const FoodTypes = () => {
         showsHorizontalScrollIndicator={false}
       >
         {types.map((item, index) => (
-          <View style={{ alignItems: 'center', margin: 10 }}>
+          <View style={{ alignItems: 'center', margin: 10 }} key={index}>
             <Image
               style={{ width: 80, height: 80, borderRadius: 50 }}
               resizeMode="contain"

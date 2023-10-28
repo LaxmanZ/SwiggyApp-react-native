@@ -1,6 +1,13 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import React from 'react';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import Carousel from '../components/Carousel';
 import FoodTypes from '../components/FoodTypes';
 import QuickFood from '../components/QuickFood';
@@ -36,6 +43,67 @@ const HomeScreen = () => {
 
       {/* Quick Food Component  */}
       <QuickFood />
+
+      {/* Filter Buttons  */}
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}
+      >
+        <Pressable
+          style={{
+            marginHorizontal: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: '#d0d0d0',
+            padding: 7,
+            width: 120,
+            borderRadius: 20,
+          }}
+        >
+          <Text>Filter</Text>
+          <Ionicons
+            style={{ marginLeft: 10 }}
+            name="filter"
+            size={20}
+            color="black"
+          />
+        </Pressable>
+
+        <Pressable
+          style={{
+            marginHorizontal: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: '#d0d0d0',
+            padding: 7,
+            borderRadius: 20,
+          }}
+        >
+          <Text>Sort By rating</Text>
+        </Pressable>
+
+        <Pressable
+          style={{
+            marginHorizontal: 10,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: '#d0d0d0',
+            padding: 7,
+            borderRadius: 20,
+          }}
+        >
+          <Text>Sort By Price</Text>
+        </Pressable>
+      </View>
     </ScrollView>
   );
 };

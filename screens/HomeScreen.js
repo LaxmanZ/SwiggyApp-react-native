@@ -17,7 +17,7 @@ import MenuItems from '../components/MenuItems';
 const HomeScreen = () => {
   const data = hotels;
   return (
-    <ScrollView>
+    <ScrollView style={{ marginTop: 10 }}>
       {/* Search Bar  */}
       <View
         style={{

@@ -11,8 +11,11 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import Carousel from '../components/Carousel';
 import FoodTypes from '../components/FoodTypes';
 import QuickFood from '../components/QuickFood';
+import hotels from '../data/hotel';
+import MenuItems from '../components/MenuItems';
 
 const HomeScreen = () => {
+  const data = hotels;
   return (
     <ScrollView>
       {/* Search Bar  */}
@@ -104,6 +107,16 @@ const HomeScreen = () => {
           <Text>Sort By Price</Text>
         </Pressable>
       </View>
+
+      <Text
+        style={{ fontSize: 20, fontWeight: 'bold', marginTop: 10, padding: 10 }}
+      >
+        Offered Hotels
+      </Text>
+
+      {data.map((item, index) => (
+        <MenuItems key={index} item={item} />
+      ))}
     </ScrollView>
   );
 };

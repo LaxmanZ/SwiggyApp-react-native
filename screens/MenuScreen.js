@@ -20,7 +20,12 @@ import { useSelector } from 'react-redux';
 
 const MenuScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
-  console.log(cart);
+  // console.log(cart);
+  const total = cart
+    .map((item) => item.price * item.quantity)
+    .reduce((curr, prev) => curr + prev, 0);
+  // console.log(total);
+
   const route = useRoute();
   // console.log(route.params);
   const navigation = useNavigation();
@@ -278,6 +283,60 @@ const MenuScreen = () => {
           </View>
         </View>
       </Modal>
+
+      {total === 0 ? null : (
+        <Pressable
+          style={{
+            backgroundColor: '#00a877',
+            width: '90%',
+            padding: 10,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginBottom: 30,
+            position: 'absolute',
+            left: 20,
+            bottom: 10,
+            borderRadius: 8,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <View>
+              <Text
+                style={{ fontSize: 16, fontWeight: 'bold', color: 'white' }}
+              >
+                {cart.length} items | {total}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: '500',
+                  marginTop: 5,
+                  color: 'white',
+                }}
+              >
+                Extra Charges may Apply!
+              </Text>
+            </View>
+            <Pressable
+              onPress={() =>
+                navigation.navigate('Cart', {
+                  name: route.params.name,
+                })
+              }
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600', color: 'white' }}>
+                View Cart
+              </Text>
+            </Pressable>
+          </View>
+        </Pressable>
+      )}
     </>
   );
 };

@@ -8,9 +8,11 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import {  FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const OrderScreen = () => {
+  const navigation = useNavigation();
   const [tip, setTip] = useState(0);
   const time = moment().format('LT');
   const mapView = useRef(null);
@@ -256,6 +258,31 @@ const OrderScreen = () => {
             ) : null}
           </View>
         </View>
+        <Pressable
+          onPress={() => navigation.navigate('Home')}
+          style={{
+            backgroundColor: '#fc8019',
+            padding: 10,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 130,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginTop: 20,
+            borderRadius: 10,
+          }}
+        >
+          <Text
+            style={{
+              textAlign: 'center',
+              color: 'white',
+              fontSize: 18,
+              fontWeight: '600',
+            }}
+          >
+            Go To Home
+          </Text>
+        </Pressable>
       </View>
     </View>
   );

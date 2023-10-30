@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
 import CartScreen from './screens/CartScreen';
 import LoadingScreen from './screens/LoadingScreen';
+import OrderScreen from './screens/OrderScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,12 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Loading"
           component={LoadingScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Order"
+          component={OrderScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

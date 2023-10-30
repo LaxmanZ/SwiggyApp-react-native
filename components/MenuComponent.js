@@ -1,8 +1,19 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import {
+  addToCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} from '../redux/CartReducer';
 
 const MenuComponent = ({ food }) => {
+  const dispatch = useDispatch();
+  const [additems, setAddItems] = useState(0);
+  const [selected, setSelected] = useState(false);
+
   return (
     <View>
       <Pressable
@@ -38,23 +49,96 @@ const MenuComponent = ({ food }) => {
             style={{ width: 120, height: 120, borderRadius: 8 }}
             source={{ uri: food.image }}
           />
-          <Pressable
-            style={{
-              position: 'absolute',
-              top: 95,
-              left: 20,
-              flexDirection: 'row',
-              paddingHorizontal: 25,
-              paddingVertical: 5,
-              alignItems: 'center',
-              backgroundColor: 'white',
-              borderRadius: 5,
-            }}
-          >
-            <Text style={{ fontSize: 18, color: '#018749', fontWeight: '600' }}>
-              ADD
-            </Text>
-          </Pressable>
+          {selected ? (
+            <Pressable
+              style={{
+                position: 'absolute',
+                top: 90,
+                left: 15,
+
+                flexDirection: 'row',
+                paddingHorizontal: 10,
+                paddingVertical: 5,
+                alignItems: 'center',
+                backgroundColor: 'white',
+                borderRadius: 5,
+              }}
+            >
+              <Pressable
+                onPress={() => {
+                  if (additems === 1) {
+                    dispatch(removeFromCart(food));
+                    setSelected(false);
+                    setAddItems(0);
+                  } else {
+                    setAddItems((c) => c - 1);
+                    dispatch(decrementQuantity(food));
+                  }
+                }}
+                style={{
+                  paddingHorizontal: 6,
+                  paddingVertical: 5,
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                }}
+              >
+                <Text style={{ fontSize: 25, color: 'green' }}>-</Text>
+              </Pressable>
+
+              <Pressable
+                style={{
+                  paddingHorizontal: 6,
+                  paddingVertical: 5,
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                }}
+              >
+                <Text style={{ fontSize: 20, color: 'green' }}>{additems}</Text>
+              </Pressable>
+
+              <Pressable
+                onPress={() => {
+                  setAddItems((c) => c + 1);
+                  dispatch(incrementQuantity(food));
+                }}
+                style={{
+                  paddingHorizontal: 6,
+                  paddingVertical: 5,
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                }}
+              >
+                <Text style={{ fontSize: 20, color: 'green' }}>+</Text>
+              </Pressable>
+            </Pressable>
+          ) : (
+            <Pressable
+              onPress={() => {
+                setSelected(true);
+                if (additems == 0) {
+                  setAddItems((c) => c + 1);
+                }
+                dispatch(addToCart(food));
+              }}
+              style={{
+                position: 'absolute',
+                top: 95,
+                left: 20,
+                flexDirection: 'row',
+                paddingHorizontal: 25,
+                paddingVertical: 5,
+                alignItems: 'center',
+                backgroundColor: 'white',
+                borderRadius: 5,
+              }}
+            >
+              <Text
+                style={{ fontSize: 18, color: '#018749', fontWeight: '600' }}
+              >
+                ADD
+              </Text>
+            </Pressable>
+          )}
         </Pressable>
       </Pressable>
     </View>

@@ -22,25 +22,25 @@ export const cartSlice = createSlice({
       );
       state.cart = removeItem;
     },
-  },
-  incrementQuantity: (state, action) => {
-    const itemPresent = state.cart.find(
-      (item) => item.id === action.payload.id
-    );
-    itemPresent.quantity++;
-  },
-  decrementQuantity: (state, action) => {
-    const itemPresent = state.cart.find(
-      (item) => item.id === action.payload.id
-    );
-    if (itemPresent.quantity == 1) {
-      const removeItem = state.cart.filter(
-        (item) => item.id !== action.payload.id
+    incrementQuantity: (state, action) => {
+      const itemPresent = state.cart.find(
+        (item) => item.id === action.payload.id
       );
-      state.cart = removeItem;
-    } else {
-      itemPresent.quantity--;
-    }
+      itemPresent.quantity++;
+    },
+    decrementQuantity: (state, action) => {
+      const itemPresent = state.cart.find(
+        (item) => item.id === action.payload.id
+      );
+      if (itemPresent.quantity == 1) {
+        const removeItem = state.cart.filter(
+          (item) => item.id !== action.payload.id
+        );
+        state.cart = removeItem;
+      } else {
+        itemPresent.quantity--;
+      }
+    },
   },
 });
 

@@ -16,8 +16,11 @@ import {
 } from '@expo/vector-icons';
 import FoodItem from '../components/FoodItem';
 import Modal from 'react-native-modal';
+import { useSelector } from 'react-redux';
 
 const MenuScreen = () => {
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
   const route = useRoute();
   // console.log(route.params);
   const navigation = useNavigation();
@@ -193,7 +196,6 @@ const MenuScreen = () => {
             marginTop: 8,
           }}
         />
-
         {route.params.menu.map((item, index) => (
           <FoodItem item={item} key={index} />
         ))}

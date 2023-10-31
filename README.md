@@ -62,7 +62,7 @@ he Swiggy Clone App includes the following key features:
 
 ## Folder Structure
 
--`assests/` - This containes all images and json files
+-`assests/` - This containes all images and json files.
 - `components/` - contains all the Components and these are all reusable components.
 - `data/` - this contains the dummy data.
 - `screens/` - This contains the all the Screens.

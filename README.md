@@ -14,9 +14,9 @@ This is a Swiggy clone app developed using React Native, Expo, Vector Icons, Lot
 
    Before you get started, make sure you have Node.js and Expo CLI installed on your system. If not, you can install them using the following commands:
 
-    ```bash
+   ```bash
     npm install -g expo-cli
-    ```
+   ```
 
 1. Clone this repository:
    
